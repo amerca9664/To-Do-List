@@ -1,0 +1,8 @@
+:root {
+  --bg-color: #333;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: var(--bg-color);
+}
