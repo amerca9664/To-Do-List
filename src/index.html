@@ -19,8 +19,8 @@
         <label for="themeChange" class="contentTitle__labelClick"></label>
     </div>
     <div class="contText">
-      <span class="circle"></span>
-      <input id="inpText" class="contText__input" type="text" placeholder="Create a new todo..." autocomplete="off">
+      
+      <input id="inpText" class="contText__input  textGray" type="text" placeholder="Create a new todo..." autocomplete="off">
 
     </div>
     <div class="contMid">
@@ -28,16 +28,21 @@
         <div id="listTodo" class="todoCont">
 
         </div>
-        <span>x Items left</span>
-        <div id="showButtons">
-            <input id="all" type="radio" name="viewActions" data-action="all" checked>
-            <label for="all">All</label>
-            <input id="active" type="radio" name="viewActions" data-action="active" >
-            <label for="active">Active</label>
-            <input id="complete" type="radio" name="viewActions" data-action="complete" >
-            <label for="complete">Complete</label>
+
+        <div class="infoAndClean  textGray">
+            <span class="infoAndClean__label">x Items left</span>
+            <div id="showButtons" class="actionsButtons">
+                <input class="actionsButtons__checkbox" id="all" type="radio" name="viewActions" data-action="all" checked hidden>
+                <label for="all" class="actionsButtons__label">All</label>
+                <input class="actionsButtons__checkbox" id="active" type="radio" name="viewActions" data-action="active" hidden>
+                <label for="active" class="actionsButtons__label">Active</label>
+                <input class="actionsButtons__checkbox" id="complete" type="radio" name="viewActions" data-action="complete" hidden>
+                <label for="complete" class="actionsButtons__label">Completed</label>
+            </div>
+            <input type="button" id="clear" class="infoAndClean__button  textGray" value="Clear completed">
+
         </div>
-        <input type="button" id="clear" value="Clear completed">
+        
     </div>
     <script src="./js/index.js"></script>
 </body>

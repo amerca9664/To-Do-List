@@ -9,7 +9,7 @@
 	--Very_Dark_Grayish_Blue: hsl(235, 19%, 35%);
 
 	/* dark theme colors */
-	--Very_Dark_Blue: hsl(235, 21%, 11%);
+	--backgroundBody: hsl(235, 21%, 11%);
 	--Very_Dark_Desaturated_Blue: hsl(235, 24%, 19%);
 	--Light_Grayish_Blue: hsl(234, 39%, 85%);
 	--Light_Grayish_Blue__hover: hsl(236, 33%, 92%);
@@ -17,17 +17,21 @@
 	--Very_Dark_Grayish_Blue: hsl(233, 14%, 35%);
 	--Very_Dark_Grayish_Blue2: hsl(237, 14%, 26%);
 
-	--linear_gradient: linear-gradient(135deg,hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+	--linear_gradient: linear-gradient(
+		135deg,
+		hsl(192, 100%, 67%),
+		hsl(280, 87%, 65%)
+	);
 
-  --imageBackground: url('../assets/images/bg-mobile-dark.jpg');
+	--imageBackground: url('../assets/images/bg-mobile-dark.jpg');
 	--checkbox_checked: url('../assets/images/icon-check.svg');
 
-  --imageClose: url('../assets/images/icon-cross.svg');
+	--imageClose: url('../assets/images/icon-cross.svg');
 }
 
 body {
 	background: top / 100vw 30vh no-repeat var(--imageBackground)
-		var(--Very_Dark_Blue);
+		var(--backgroundBody);
 	color: white;
 }
 
@@ -94,36 +98,92 @@ body {
 	padding-left: 20px;
 	padding-right: 20px;
 	border-bottom: solid 2px var(--Very_Dark_Grayish_Blue2);
+	color: var(--Light_Grayish_Blue);
 }
 
 .todoCont__divCheckbox {
 	padding-left: 30px;
 }
 
-.todoCont__Close{
-  width: 15px;
+.todoCont__Close {
+	width: 15px;
 	height: 15px;
-  border: none;
-  outline: none;
-  background:center / contain no-repeat var(--imageClose) ;
-  /* visibility: hidden; */
+	border: none;
+	outline: none;
+	background: center / contain no-repeat var(--imageClose);
+	/* visibility: hidden;  */
 }
 
-.circle,
+.infoAndClean {
+	position: relative;
+	width: 90vw;
+	height: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.actionsButtons {
+	position: absolute;
+	width: 90vw;
+	height: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	padding-left: 55px;
+	padding-right: 55px;
+	left: 0;
+	top: 70px;
+	background-color: var(--Very_Dark_Desaturated_Blue);
+}
+
+.infoAndClean__button {
+	border: none;
+	background: none;
+	color: inherit;
+}
+
+.textGray {
+	color: var(--Very_Dark_Grayish_Blue);
+	font-weight: 700;
+}
+
+.actionsButtons__checkbox:checked + .actionsButtons__label {
+	color: var(--Bright_Blue);
+}
+/* @media (hover:hover) {
+	.todoCont__div:hover .todoCont__Close{
+		visibility: visible;
+	}
+} */
+
+.contText::after,
 .todoCont__label::after {
 	position: absolute;
 	width: 20px;
 	height: 20px;
+	content: '';
 	left: 20px;
 	border-radius: 10px;
 	background-color: transparent;
 	border: solid 1px var(--Dark_Grayish_Blue);
 }
 
-.todoCont__label::after {
-	content: '';
+.todoCont__checkbox:checked ~ .todoCont__label::after {
+	background:
+		center / 10px 10px no-repeat var(--checkbox_checked),
+		var(--linear_gradient);
+	text-decoration-line: line-through;
 }
 
-.todoCont__checkbox:checked ~ .todoCont__label::after {
-	background: center / 10px 10px no-repeat var(--checkbox_checked), var(--linear_gradient);
+.todoCont__checkbox:checked ~ .todoCont__label {
+	text-decoration-line: line-through;
+	text-decoration-thickness: 2px;
+	color: var(--Dark_Grayish_Blue);
 }

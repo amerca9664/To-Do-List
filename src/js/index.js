@@ -2,6 +2,18 @@ const inpTextElement = document.getElementById('inpText');
 const listTodoElement = document.getElementById('listTodo');
 const showButtonsElement = document.getElementById('showButtons');
 const clearElement = document.getElementById('clear');
+const root = document.documentElement;
+
+if (
+	window.matchMedia &&
+	window.matchMedia('(prefers-color-scheme: dark)').matches
+) {
+	root.style.setProperty('--backgroundBody', 'hsl(235, 21%, 11%)');
+	console.log('dark');
+}else{
+	root.style.setProperty('--backgroundBody', 'white');
+	console.log('not fark')
+}
 
 const FILTERS_ACTS = {
 	complete: true,
@@ -9,9 +21,10 @@ const FILTERS_ACTS = {
 };
 
 let listTodov = [];
-const fragment = document.createDocumentFragment();
+
 let selectedViewAction = 'all';
-const addItems = items => {
+const printTasks = items => {
+	const fragment = document.createDocumentFragment();
 	let filteredJobs = [];
 	if (selectedViewAction != 'all') {
 		filteredJobs = items.filter(
@@ -26,17 +39,16 @@ const addItems = items => {
 		const nameJob = item.name;
 		const isChecked = item.state;
 		const classCheckButton = 'todoCont__checkbox';
-		const classLabelChk = 'todoCont__label'
-        const classDiv = 'todoCont__div';
-		const classDivCheckbox = 'todoCont__divCheckbox'
-		const classInput = 'todoCont__Close'
+		const classLabelChk = 'todoCont__label';
+		const classDiv = 'todoCont__div';
+		const classDivCheckbox = 'todoCont__divCheckbox';
+		const classInput = 'todoCont__Close';
 
 		const div = document.createElement('div');
-        div.classList = classDiv;
+		div.classList = classDiv;
 
-		const divCheckbox = document.createElement('div')
+		const divCheckbox = document.createElement('div');
 		divCheckbox.classList = classDivCheckbox;
-
 
 		const label = document.createElement('label');
 		label.htmlFor = id;
@@ -54,8 +66,7 @@ const addItems = items => {
 		const input = document.createElement('input');
 		input.type = 'button';
 		input.classList = classInput;
-		input.dataset['select']= id;
-		
+		input.dataset['select'] = id;
 
 		checkbox.checked = isChecked;
 
@@ -63,7 +74,7 @@ const addItems = items => {
 
 		fragment.append(div);
 	});
-
+	listTodoElement.textContent = '';
 	listTodoElement.append(fragment);
 };
 
@@ -78,11 +89,11 @@ inpTextElement.addEventListener('keyup', event => {
 		const objectJob = { id: idGen, name: itemAdd, state: false };
 		listTodov.push(objectJob);
 
-		let send = [];
-		const objectSend = { id: idGen, name: itemAdd, state: false };
-		send.push(objectSend);
+		// let send = [];
+		// const objectSend = { id: idGen, name: itemAdd, state: false };
+		// send.push(objectSend);
 
-		addItems(send);
+		printTasks(listTodov);
 		inpTextElement.value = '';
 		idGen++;
 	}
@@ -100,32 +111,34 @@ listTodoElement.addEventListener('click', event => {
 
 		console.log(id);
 		console.log(listTodov);
-		remove();
-		addItems(listTodov);
+		// remove();
+		printTasks(listTodov);
 	}
 });
 
 showButtonsElement.addEventListener('change', event => {
 	console.log(event.target.dataset.action);
 	selectedViewAction = event.target.dataset.action;
-	remove();
-	addItems(listTodov);
+	// remove();
+	printTasks(listTodov);
 });
 
 clearElement.addEventListener('click', event => {
-	remove();
+	// remove();
 	const cleanComplete = listTodov.filter(item => item.state === false);
 
 	listTodov = cleanComplete;
-	addItems(listTodov);
+	printTasks(listTodov);
 });
 
-listTodoElement.addEventListener('click', event =>{
-	
-	if(event.target.classList.value === 'todoCont__Close'){
-		console.log(event.target)
+listTodoElement.addEventListener('click', event => {
+	if (event.target.classList.value === 'todoCont__Close') {
+		listTodov.forEach((item, index) => {
+			if (item.id === Number(event.target.dataset.select)) {
+				listTodov.splice(index, 1);
+			}
+		});
 
+		event.target.parentElement.remove();
 	}
-
-})
-	
+});
