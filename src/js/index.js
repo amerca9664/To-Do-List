@@ -1,144 +1,63 @@
-const inpTextElement = document.getElementById('inpText');
-const listTodoElement = document.getElementById('listTodo');
-const showButtonsElement = document.getElementById('showButtons');
-const clearElement = document.getElementById('clear');
-const root = document.documentElement;
 
-if (
-	window.matchMedia &&
-	window.matchMedia('(prefers-color-scheme: dark)').matches
-) {
-	root.style.setProperty('--backgroundBody', 'hsl(235, 21%, 11%)');
-	console.log('dark');
-}else{
-	root.style.setProperty('--backgroundBody', 'white');
-	console.log('not fark')
+import { changeThemeElement, clearElement, inpTextElement, listTodoElement, showButtonsElement, root } from "./dom";
+import { addItem, deleteCompletedTask, deleteTask, setCheckbox, setFilter } from "./functions";
+
+
+const setTheme = (themeState)=>{
+	if(themeState){
+		root.style.setProperty('--backgroundBody', 'hsl(235, 21%, 11%)');
+		root.style.setProperty('--imageTheme', 'url(../assets/images/icon-sun.svg)');
+		root.style.setProperty('--itemBackground', 'hsl(235, 24%, 19%)');
+		root.style.setProperty('--borderItem', 'hsl(237, 14%, 26%)');
+		console.log('dark');
+		
+	}else{
+		root.style.setProperty('--backgroundBody', 'hsl(236, 33%, 92%)');
+		root.style.setProperty('--imageTheme', 'url(../assets/images/icon-moon.svg)')
+		root.style.setProperty('--itemBackground', 'hsl(0, 0%, 98%)');
+		root.style.setProperty('--borderItem', 'hsl(236, 33%, 92%)');
+		console.log('not fark')
+		
+	}
 }
 
-const FILTERS_ACTS = {
-	complete: true,
-	active: false
-};
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+	changeThemeElement.checked = true;
+	setTheme(true);
+}else{
+	changeThemeElement.checked = false;
+	setTheme(false);
+}
 
-let listTodov = [];
 
-let selectedViewAction = 'all';
-const printTasks = items => {
-	const fragment = document.createDocumentFragment();
-	let filteredJobs = [];
-	if (selectedViewAction != 'all') {
-		filteredJobs = items.filter(
-			item => item.state === FILTERS_ACTS[selectedViewAction]
-		);
-	} else {
-		filteredJobs = items;
-	}
 
-	filteredJobs.forEach(item => {
-		const id = item.id;
-		const nameJob = item.name;
-		const isChecked = item.state;
-		const classCheckButton = 'todoCont__checkbox';
-		const classLabelChk = 'todoCont__label';
-		const classDiv = 'todoCont__div';
-		const classDivCheckbox = 'todoCont__divCheckbox';
-		const classInput = 'todoCont__Close';
 
-		const div = document.createElement('div');
-		div.classList = classDiv;
 
-		const divCheckbox = document.createElement('div');
-		divCheckbox.classList = classDivCheckbox;
 
-		const label = document.createElement('label');
-		label.htmlFor = id;
-		label.textContent = nameJob;
-		label.classList = classLabelChk;
 
-		const checkbox = document.createElement('input');
-		checkbox.type = 'checkbox';
-		checkbox.id = id;
-		checkbox.classList = classCheckButton;
-		checkbox.hidden = true;
 
-		divCheckbox.append(checkbox, label);
-
-		const input = document.createElement('input');
-		input.type = 'button';
-		input.classList = classInput;
-		input.dataset['select'] = id;
-
-		checkbox.checked = isChecked;
-
-		div.append(divCheckbox, input);
-
-		fragment.append(div);
-	});
-	listTodoElement.textContent = '';
-	listTodoElement.append(fragment);
-};
-
-const remove = () => {
-	[...listTodoElement.children].forEach(item => item.remove());
-};
-
-let idGen = 0;
 inpTextElement.addEventListener('keyup', event => {
-	if (event.key === 'Enter' && inpTextElement.value != '') {
-		const itemAdd = inpTextElement.value;
-		const objectJob = { id: idGen, name: itemAdd, state: false };
-		listTodov.push(objectJob);
-
-		// let send = [];
-		// const objectSend = { id: idGen, name: itemAdd, state: false };
-		// send.push(objectSend);
-
-		printTasks(listTodov);
-		inpTextElement.value = '';
-		idGen++;
-	}
+	addItem(event)
 });
 
 listTodoElement.addEventListener('click', event => {
-	if (event.target.tagName === 'INPUT' && event.target.type === 'checkbox') {
-		const id = Number(event.target.id);
-		const isChecked = event.target.checked;
-		listTodov.forEach(item => {
-			if (item.id === id) {
-				item.state = isChecked;
-			}
-		});
-
-		console.log(id);
-		console.log(listTodov);
-		// remove();
-		printTasks(listTodov);
-	}
+	setCheckbox(event)
 });
 
 showButtonsElement.addEventListener('change', event => {
-	console.log(event.target.dataset.action);
-	selectedViewAction = event.target.dataset.action;
-	// remove();
-	printTasks(listTodov);
+	setFilter(event)
 });
 
 clearElement.addEventListener('click', event => {
-	// remove();
-	const cleanComplete = listTodov.filter(item => item.state === false);
+	deleteCompletedTask()
 
-	listTodov = cleanComplete;
-	printTasks(listTodov);
 });
 
 listTodoElement.addEventListener('click', event => {
-	if (event.target.classList.value === 'todoCont__Close') {
-		listTodov.forEach((item, index) => {
-			if (item.id === Number(event.target.dataset.select)) {
-				listTodov.splice(index, 1);
-			}
-		});
-
-		event.target.parentElement.remove();
-	}
+	deleteTask(event)
 });
+
+changeThemeElement.addEventListener('change', event =>{
+	setTheme(event.target.checked)
+	console.log(event.target.checked)
+} )
