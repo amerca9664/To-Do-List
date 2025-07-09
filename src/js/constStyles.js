@@ -1,47 +1,63 @@
 export const COLORS = {
 	darkTheme: {
 		backgroundBody: {
-			name: "--backgroundBody",
-			value: "hsl(235, 21%, 11%)",
+			name: '--backgroundBody',
+			value: 'hsl(235, 21%, 11%)',
 		},
 		imageTheme: {
-			name: "--imageTheme",
-			value: "url(../assets/images/icon-sun.svg)",
+			name: '--imageTheme',
+			value: 'url(../assets/images/icon-sun.svg)',
 		},
 		itemBackground: {
-			name: "--itemBackground",
-			value: "hsl(235, 24%, 19%)",
+			name: '--itemBackground',
+			value: 'hsl(235, 24%, 19%)',
 		},
 		borderItem: {
-			name: "--borderItem",
-			value: "hsl(237, 14%, 26%)",
+			name: '--borderItem',
+			value: 'hsl(237, 14%, 26%)',
 		},
 		imageBackground: {
-			name: "--imageBackground",
-			value: "url(../assets/images/bg-mobile-dark.jpg)",
+			name: '--imageBackground',
+			value: 'url(../assets/images/bg-mobile-dark.jpg)',
+		},
+		taskColor: {
+			name: '--taskColor',
+			value: 'hsl(234, 39%, 85%)',
+		},
+		checkedLabelColor: {
+			name: '--checkedLabelColor',
+			value: 'hsl(234, 11%, 52%)',
 		},
 	},
 
 	lightTheme: {
 		backgroundBody: {
-			name: "--backgroundBody",
-			value: "hsl(236, 33%, 92%)",
+			name: '--backgroundBody',
+			value: 'hsl(236, 33%, 92%)',
 		},
 		imageTheme: {
-			name: "--imageTheme",
-			value: "url(../assets/images/icon-moon.svg)",
+			name: '--imageTheme',
+			value: 'url(../assets/images/icon-moon.svg)',
 		},
 		itemBackground: {
-			name: "--itemBackground",
-			value: "hsl(0, 0%, 98%)",
+			name: '--itemBackground',
+			value: 'hsl(0, 0%, 98%)',
 		},
 		borderItem: {
-			name: "--borderItem",
-			value: "hsl(236, 33%, 92%)",
+			name: '--borderItem',
+			value: 'hsl(236, 33%, 92%)',
 		},
 		imageBackground: {
-			name: "--imageBackground",
-			value: "url(../assets/images/bg-mobile-light.jpg)",
+			name: '--imageBackground',
+			value: 'url(../assets/images/bg-mobile-light.jpg)',
+		},
+		taskColor: {
+			name: '--taskColor',
+			value: 'hsl(235, 19%, 35%)',
+		},
+		checkedLabelColor: {
+			name: '--checkedLabelColor',
+			value: 'hsl(210, 1.60%, 74.90%)',
 		},
 	},
 };

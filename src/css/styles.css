@@ -1,18 +1,15 @@
 :root {
 	--Bright_Blue: hsl(220, 98%, 61%);
-
+	--checkedLabelColor: hsl(234, 11%, 52%);
 	/* light theme colors */
 	--Very_Light_Gray: hsl(0, 0%, 98%); /* itemBackground */
 	--Very_Light_Grayish_Blue: hsl(236, 33%, 92%); /* background */
-	--Light_Grayish_Blue: hsl(233, 11%, 84%);
-	--Dark_Grayish_Blue: hsl(236, 9%, 61%);
-	--Very_Dark_Grayish_Blue: hsl(235, 19%, 35%);
 
 	/* dark theme colors */
 	--backgroundBody: hsl(235, 21%, 11%);
 	--itemBackground: hsl(235, 24%, 19%);
-	--Light_Grayish_Blue: hsl(234, 39%, 85%);
-	--Light_Grayish_Blue__hover: hsl(236, 33%, 92%);
+	--taskColor: hsl(234, 39%, 85%);
+	--taskColor__hover: hsl(236, 33%, 92%);
 	--Dark_Grayish_Blue: hsl(234, 11%, 52%);
 	--Very_Dark_Grayish_Blue: hsl(233, 14%, 35%);
 	--borderItem: hsl(237, 14%, 26%);
@@ -105,7 +102,7 @@ body {
 	padding-left: 20px;
 	padding-right: 20px;
 	border-bottom: solid 2px var(--borderItem);
-	color: var(--Light_Grayish_Blue);
+	color: var(--taskColor);
 }
 
 .todoCont__divCheckbox {
@@ -149,13 +146,18 @@ body {
 	top: 70px;
 	background-color: var(--itemBackground);
 }
-
+.actionsButtons__label {
+	font-size: 16px;
+}
 .infoAndClean__button {
 	border: none;
 	background: none;
 	color: inherit;
 }
-
+.infoAndClean__label,
+.infoAndClean__button {
+	opacity: 0.7;
+}
 .actionsButtons__checkbox:checked + .actionsButtons__label {
 	color: var(--Bright_Blue);
 }
@@ -187,5 +189,5 @@ body {
 .todoCont__checkbox:checked ~ .todoCont__label {
 	text-decoration-line: line-through;
 	text-decoration-thickness: 2px;
-	color: var(--Dark_Grayish_Blue);
+	color: var(--checkedLabelColor);
 }
