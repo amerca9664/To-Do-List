@@ -1,6 +1,6 @@
 const FILTERS_ACTS = {
 	complete: true,
-	active: false
+	active: false,
 };
 
-export {FILTERS_ACTS}
+export { FILTERS_ACTS };

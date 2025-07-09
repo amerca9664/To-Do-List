@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.1.1",
     "prettier": "^3.6.2",
     "vite": "^7.0.1"
   },

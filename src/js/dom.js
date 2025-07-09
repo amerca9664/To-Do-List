@@ -11,5 +11,5 @@ export {
 	showButtonsElement,
 	clearElement,
 	changeThemeElement,
-	root
+	root,
 };

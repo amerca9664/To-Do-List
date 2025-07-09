@@ -1,5 +1,5 @@
-import { FILTERS_ACTS } from "./consts";
-import { inpTextElement, listTodoElement } from "./dom";
+import { FILTERS_ACTS } from './consts';
+import { inpTextElement, listTodoElement } from './dom';
 
 let listTodov = [];
 
@@ -7,7 +7,7 @@ let selectedViewAction = 'all';
 
 let idGen = 0;
 const addItem = event => {
-	if (event.key === 'Enter' && inpTextElement.value != '') {
+	if (event.key === 'Enter' && inpTextElement.value !== '') {
 		const itemAdd = inpTextElement.value;
 		const objectJob = { id: idGen, name: itemAdd, state: false };
 		listTodov.push(objectJob);
@@ -39,9 +39,9 @@ const setCheckbox = event => {
 const printTasks = items => {
 	const fragment = document.createDocumentFragment();
 	let filteredJobs = [];
-	if (selectedViewAction != 'all') {
+	if (selectedViewAction !== 'all') {
 		filteredJobs = items.filter(
-			item => item.state === FILTERS_ACTS[selectedViewAction]
+			item => item.state === FILTERS_ACTS[selectedViewAction],
 		);
 	} else {
 		filteredJobs = items;
@@ -79,7 +79,7 @@ const printTasks = items => {
 		const input = document.createElement('input');
 		input.type = 'button';
 		input.classList = classInput;
-		input.dataset['select'] = id;
+		input.dataset.select = id;
 
 		checkbox.checked = isChecked;
 
@@ -108,7 +108,7 @@ const deleteCompletedTask = () => {
 	printTasks(listTodov);
 };
 
-const deleteTask = (event) => {
+const deleteTask = event => {
 	if (event.target.classList.value === 'todoCont__Close') {
 		listTodov.forEach((item, index) => {
 			if (item.id === Number(event.target.dataset.select)) {
@@ -126,5 +126,5 @@ export {
 	setCheckbox,
 	setFilter,
 	deleteCompletedTask,
-    deleteTask
+	deleteTask,
 };
