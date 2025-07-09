@@ -33,16 +33,19 @@ body {
 		top / 100vw 30vh no-repeat var(--imageBackground) var(--backgroundBody);
 	color: white;
 }
-
+.contentTitle,
+.contText,
+.contMid {
+	width: 90vw;
+	margin-left: auto;
+	margin-right: auto;
+}
 .textGray {
 	color: var(--Very_Dark_Grayish_Blue);
 	font-weight: 700;
 }
 
 .contentTitle {
-	width: 90vw;
-	margin-left: auto;
-	margin-right: auto;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -64,13 +67,12 @@ body {
 }
 
 .contText {
+	height: 50px;
+
 	position: relative;
 	display: flex;
 	align-items: center;
-	width: 90vw;
-	height: 50px;
-	margin-left: auto;
-	margin-right: auto;
+
 	border-radius: 5px;
 	overflow: hidden;
 	margin-bottom: 20px;
@@ -86,9 +88,6 @@ body {
 }
 
 .contMid {
-	width: 90vw;
-	margin-left: auto;
-	margin-right: auto;
 	background-color: var(--itemBackground);
 }
 
@@ -120,10 +119,9 @@ body {
 
 .infoAndClean {
 	position: relative;
-	width: 90vw;
+	width: 100%;
 	height: 50px;
-	margin-left: auto;
-	margin-right: auto;
+
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
