@@ -1,9 +1,9 @@
 import { COLORS } from './constStyles';
-import { root } from './dom';
+import { bodyElement, root } from './dom';
 
 const setTheme = themeState => {
 	const { darkTheme, lightTheme } = COLORS;
-	console.log(lightTheme);
+
 	const {
 		backgroundBody: darkBackgroundBody,
 		imageBackground: darkImageBackground,
@@ -33,8 +33,8 @@ const setTheme = themeState => {
 			darkCheckedLabelColor.name,
 			darkCheckedLabelColor.value,
 		);
-		root.style.setProperty(darkImageBackground.name, darkImageBackground.value);
-		console.log('dark');
+		bodyElement.classList.remove(lightImageBackground.name);
+		bodyElement.classList.add(darkImageBackground.name);
 	} else {
 		root.style.setProperty(lightBackgroundBody.name, lightBackgroundBody.value);
 		root.style.setProperty(lightImageTheme.name, lightImageTheme.value);
@@ -45,11 +45,8 @@ const setTheme = themeState => {
 			lightCheckedLabelColor.name,
 			lightCheckedLabelColor.value,
 		);
-		root.style.setProperty(
-			lightImageBackground.name,
-			lightImageBackground.value,
-		);
-		console.log('not fark');
+		bodyElement.classList.remove(darkImageBackground.name);
+		bodyElement.classList.add(lightImageBackground.name);
 	}
 };
 

@@ -26,11 +26,24 @@
 	--imageBackgroundDesktop: url('../assets/images/bg-desktop-light.jpg');
 }
 
-body {
+.bod {
 	background:
 		top / 100vw 30vh no-repeat var(--imageBackground) var(--backgroundBody);
 	color: white;
 }
+
+.body-light {
+	background:
+		top / 100vw 30vh no-repeat url('../assets/images/bg-mobile-light.jpg')
+		var(--backgroundBody);
+}
+
+.body-dark {
+	background:
+		top / 100vw 30vh no-repeat url('../assets/images/bg-mobile-dark.jpg')
+		var(--backgroundBody);
+}
+
 .contentTitle,
 .contText,
 .contMid {
@@ -114,20 +127,12 @@ body {
 	padding-left: 30px;
 }
 
-.todoCont__label:hover::after {
-	background:
-		linear-gradient(var(--itemBackground)) padding-box,
-		var(--linear_gradient) border-box;
-	border: solid 1px transparent;
-}
-
 .todoCont__Close {
 	width: 15px;
 	height: 15px;
 	border: none;
 	outline: none;
 	background: center / contain no-repeat var(--imageClose);
-	/* visibility: hidden;  */
 }
 
 .infoAndClean {
@@ -159,24 +164,9 @@ body {
 	color: inherit;
 }
 
-.infoAndClean__button:hover,
-.actionsButtons__label:hover,
-.contentTitle__labelClick:hover,
-.todoCont__label:hover {
-	cursor: pointer;
-}
-
 .infoAndClean__label,
 .infoAndClean__button {
 	opacity: 0.9;
-}
-.actionsButtons__checkbox:checked + .actionsButtons__label {
-	color: var(--Bright_Blue);
-}
-@media (hover: hover) {
-	.todoCont__div:hover .todoCont__Close {
-		visibility: visible;
-	}
 }
 
 .contText::after,
@@ -191,25 +181,12 @@ body {
 	border: solid 1px var(--Dark_Grayish_Blue);
 }
 
-.todoCont__checkbox:checked ~ .todoCont__label::after {
-	background:
-		center / 10px 10px no-repeat var(--checkbox_checked),
-		var(--linear_gradient);
-	text-decoration-line: line-through;
-}
-
-.todoCont__checkbox:checked ~ .todoCont__label {
-	text-decoration-line: line-through;
-	text-decoration-thickness: 2px;
-	color: var(--checkedLabelColor);
-}
-
 @media (min-width: 700px) {
-	body,
+	.bod,
 	.actionsButtons__label {
 		font-size: 18px;
 	}
-	body {
+	.bod {
 		background:
 			top / 100vw 30vh no-repeat var(--imageBackgroundDesktop)
 			var(--backgroundBody);
@@ -236,4 +213,42 @@ body {
 	.todoCont__Close {
 		visibility: hidden;
 	}
+}
+
+@media (hover: hover) {
+	.infoAndClean__button:hover,
+	.actionsButtons__label:hover,
+	.contentTitle__labelClick:hover,
+	.todoCont__label:hover,
+	.todoCont__Close:hover {
+		cursor: pointer;
+	}
+
+	.todoCont__label:hover::after {
+		background:
+			linear-gradient(var(--itemBackground)) padding-box,
+			var(--linear_gradient) border-box;
+		border: solid 1px transparent;
+	}
+
+	.todoCont__div:hover .todoCont__Close {
+		visibility: visible;
+	}
+}
+
+.actionsButtons__checkbox:checked + .actionsButtons__label {
+	color: var(--Bright_Blue);
+}
+
+.todoCont__checkbox:checked ~ .todoCont__label {
+	text-decoration-line: line-through;
+	text-decoration-thickness: 2px;
+	color: var(--checkedLabelColor);
+}
+
+.todoCont__checkbox:checked ~ .todoCont__label::after {
+	background:
+		center / 10px 10px no-repeat var(--checkbox_checked),
+		var(--linear_gradient);
+	text-decoration-line: line-through;
 }

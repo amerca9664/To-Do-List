@@ -17,8 +17,7 @@ export const COLORS = {
 			value: 'hsl(237, 14%, 26%)',
 		},
 		imageBackground: {
-			name: '--imageBackground',
-			value: 'url(../assets/images/bg-mobile-dark.jpg)',
+			name: 'body-dark',
 		},
 		taskColor: {
 			name: '--taskColor',
@@ -48,8 +47,7 @@ export const COLORS = {
 			value: 'hsl(236, 33%, 92%)',
 		},
 		imageBackground: {
-			name: '--imageBackground',
-			value: 'url(../assets/images/bg-mobile-light.jpg)',
+			name: 'body-light',
 		},
 		taskColor: {
 			name: '--taskColor',
