@@ -155,7 +155,7 @@ body {
 }
 .infoAndClean__label,
 .infoAndClean__button {
-	opacity: 0.7;
+	opacity: 0.9;
 }
 .actionsButtons__checkbox:checked + .actionsButtons__label {
 	color: var(--Bright_Blue);

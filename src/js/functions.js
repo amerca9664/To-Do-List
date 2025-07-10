@@ -1,5 +1,5 @@
 import { FILTERS_ACTS } from './consts';
-import { inpTextElement, listTodoElement } from './dom';
+import { inpTextElement, listTodoElement, showLength } from './dom';
 
 let listTodov = [];
 
@@ -36,9 +36,21 @@ const setCheckbox = event => {
 	}
 };
 
+const setLengthSpan = () => {
+	let countCheckedTask = 0;
+	listTodov.forEach(element => {
+		if (element.state) {
+			countCheckedTask++;
+		}
+	});
+
+	showLength.textContent = listTodov.length - countCheckedTask;
+};
+
 const printTasks = items => {
 	const fragment = document.createDocumentFragment();
 	let filteredJobs = [];
+
 	if (selectedViewAction !== 'all') {
 		filteredJobs = items.filter(
 			item => item.state === FILTERS_ACTS[selectedViewAction],
@@ -89,6 +101,7 @@ const printTasks = items => {
 	});
 	listTodoElement.textContent = '';
 	listTodoElement.append(fragment);
+	setLengthSpan();
 };
 
 const remove = () => {
