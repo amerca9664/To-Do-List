@@ -35,7 +35,7 @@ const setTheme = themeState => {
 		);
 		bodyElement.classList.remove(lightImageBackground.name);
 		bodyElement.classList.add(darkImageBackground.name);
-		console.log(labelCheckboxThemeElement.classList);
+
 		labelCheckboxThemeElement[0].classList.remove(lightImageTheme.name);
 		labelCheckboxThemeElement[0].classList.add(darkImageTheme.name);
 	} else {
