@@ -5,8 +5,7 @@ export const COLORS = {
 			value: 'hsl(235, 21%, 11%)',
 		},
 		imageTheme: {
-			name: '--imageTheme',
-			value: 'url(../assets/images/icon-sun.svg)',
+			name: 'contentTitle__labelClick-dark',
 		},
 		itemBackground: {
 			name: '--itemBackground',
@@ -35,8 +34,7 @@ export const COLORS = {
 			value: 'hsl(236, 33%, 92%)',
 		},
 		imageTheme: {
-			name: '--imageTheme',
-			value: 'url(../assets/images/icon-moon.svg)',
+			name: 'contentTitle__labelClick-light',
 		},
 		itemBackground: {
 			name: '--itemBackground',

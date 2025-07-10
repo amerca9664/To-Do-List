@@ -44,6 +44,14 @@
 		var(--backgroundBody);
 }
 
+.contentTitle__labelClick-light {
+	background: center / contain no-repeat url('../assets/images/icon-moon.svg');
+}
+
+.contentTitle__labelClick-dark {
+	background: center / contain no-repeat url('../assets/images/icon-sun.svg');
+}
+
 .contentTitle,
 .contText,
 .contMid {
@@ -75,7 +83,6 @@
 	display: block;
 	width: 20px;
 	height: 20px;
-	background: center / contain no-repeat var(--imageTheme);
 }
 
 .contText {

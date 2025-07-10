@@ -1,5 +1,5 @@
 import { COLORS } from './constStyles';
-import { bodyElement, root } from './dom';
+import { bodyElement, labelCheckboxThemeElement, root } from './dom';
 
 const setTheme = themeState => {
 	const { darkTheme, lightTheme } = COLORS;
@@ -25,7 +25,7 @@ const setTheme = themeState => {
 	} = lightTheme;
 	if (themeState) {
 		root.style.setProperty(darkBackgroundBody.name, darkBackgroundBody.value);
-		root.style.setProperty(darkImageTheme.name, darkImageTheme.value);
+
 		root.style.setProperty(darkItemBackground.name, darkItemBackground.value);
 		root.style.setProperty(darkbBorderItem.name, darkbBorderItem.value);
 		root.style.setProperty(darkTaskColor.name, darkTaskColor.value);
@@ -35,9 +35,12 @@ const setTheme = themeState => {
 		);
 		bodyElement.classList.remove(lightImageBackground.name);
 		bodyElement.classList.add(darkImageBackground.name);
+		console.log(labelCheckboxThemeElement.classList);
+		labelCheckboxThemeElement[0].classList.remove(lightImageTheme.name);
+		labelCheckboxThemeElement[0].classList.add(darkImageTheme.name);
 	} else {
 		root.style.setProperty(lightBackgroundBody.name, lightBackgroundBody.value);
-		root.style.setProperty(lightImageTheme.name, lightImageTheme.value);
+
 		root.style.setProperty(lightItemBackground.name, lightItemBackground.value);
 		root.style.setProperty(lightBorderItem.name, lightBorderItem.value);
 		root.style.setProperty(lightTaskColor.name, lightTaskColor.value);
@@ -47,6 +50,9 @@ const setTheme = themeState => {
 		);
 		bodyElement.classList.remove(darkImageBackground.name);
 		bodyElement.classList.add(lightImageBackground.name);
+
+		labelCheckboxThemeElement[0].classList.remove(darkImageTheme.name);
+		labelCheckboxThemeElement[0].classList.add(lightImageTheme.name);
 	}
 };
 
