@@ -6,6 +6,7 @@ const setTheme = themeState => {
 	console.log(lightTheme);
 	const {
 		backgroundBody: darkBackgroundBody,
+		imageBackground: darkImageBackground,
 		imageTheme: darkImageTheme,
 		itemBackground: darkItemBackground,
 		borderItem: darkbBorderItem,
@@ -15,6 +16,7 @@ const setTheme = themeState => {
 
 	const {
 		backgroundBody: lightBackgroundBody,
+		imageBackground: lightImageBackground,
 		imageTheme: lightImageTheme,
 		itemBackground: lightItemBackground,
 		borderItem: lightBorderItem,
@@ -31,6 +33,7 @@ const setTheme = themeState => {
 			darkCheckedLabelColor.name,
 			darkCheckedLabelColor.value,
 		);
+		root.style.setProperty(darkImageBackground.name, darkImageBackground.value);
 		console.log('dark');
 	} else {
 		root.style.setProperty(lightBackgroundBody.name, lightBackgroundBody.value);
@@ -41,6 +44,10 @@ const setTheme = themeState => {
 		root.style.setProperty(
 			lightCheckedLabelColor.name,
 			lightCheckedLabelColor.value,
+		);
+		root.style.setProperty(
+			lightImageBackground.name,
+			lightImageBackground.value,
 		);
 		console.log('not fark');
 	}

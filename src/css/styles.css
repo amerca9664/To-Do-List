@@ -1,9 +1,6 @@
 :root {
 	--Bright_Blue: hsl(220, 98%, 61%);
 	--checkedLabelColor: hsl(234, 11%, 52%);
-	/* light theme colors */
-	--Very_Light_Gray: hsl(0, 0%, 98%); /* itemBackground */
-	--Very_Light_Grayish_Blue: hsl(236, 33%, 92%); /* background */
 
 	/* dark theme colors */
 	--backgroundBody: hsl(235, 21%, 11%);
@@ -26,6 +23,7 @@
 	--imageClose: url('../assets/images/icon-cross.svg');
 
 	--imageTheme: url('../assets/images/icon-sun.svg');
+	--imageBackgroundDesktop: url('../assets/images/bg-desktop-light.jpg');
 }
 
 body {
@@ -42,7 +40,7 @@ body {
 	margin-right: auto;
 }
 .textGray {
-	color: var(--Very_Dark_Grayish_Blue);
+	color: var(--Dark_Grayish_Blue);
 	font-weight: 400;
 }
 
@@ -116,6 +114,13 @@ body {
 	padding-left: 30px;
 }
 
+.todoCont__label:hover::after {
+	background:
+		linear-gradient(var(--itemBackground)) padding-box,
+		var(--linear_gradient) border-box;
+	border: solid 1px transparent;
+}
+
 .todoCont__Close {
 	width: 15px;
 	height: 15px;
@@ -153,6 +158,14 @@ body {
 	background: none;
 	color: inherit;
 }
+
+.infoAndClean__button:hover,
+.actionsButtons__label:hover,
+.contentTitle__labelClick:hover,
+.todoCont__label:hover {
+	cursor: pointer;
+}
+
 .infoAndClean__label,
 .infoAndClean__button {
 	opacity: 0.9;
@@ -160,11 +173,11 @@ body {
 .actionsButtons__checkbox:checked + .actionsButtons__label {
 	color: var(--Bright_Blue);
 }
-/* @media (hover:hover) {
-	.todoCont__div:hover .todoCont__Close{
+@media (hover: hover) {
+	.todoCont__div:hover .todoCont__Close {
 		visibility: visible;
 	}
-} */
+}
 
 .contText::after,
 .todoCont__label::after {
@@ -196,6 +209,15 @@ body {
 	.actionsButtons__label {
 		font-size: 18px;
 	}
+	body {
+		background:
+			top / 100vw 30vh no-repeat var(--imageBackgroundDesktop)
+			var(--backgroundBody);
+	}
+	.contentTitle__labelClick {
+		width: 30px;
+		height: 30px;
+	}
 
 	.contMid {
 		border-radius: 10px;
@@ -210,5 +232,8 @@ body {
 	.todoCont__div,
 	.infoAndClean {
 		height: 65px;
+	}
+	.todoCont__Close {
+		visibility: hidden;
 	}
 }
